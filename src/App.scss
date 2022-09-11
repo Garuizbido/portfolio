@@ -1,0 +1,21 @@
+$primary-color: #ff2010;
+
+@import "animate.css";
+
+@font-face {
+  font-family: "Azonix";
+  src: url("./assets/fonts/azonix/Azonix-1VB0.otf") format("opentype");
+}
+@font-face {
+  font-family: "Helvetica Nue";
+  src: url("./assets/fonts/helvetica-nue/helvetica-neu.ttf") format("truetype");
+}
+@font-face {
+  font-family: "La Belle Aurore";
+  src: url("./assets/fonts/labelleauror/LaBelleAurore.woff2") format("wwoff2");
+}
+
+input,
+textarea {
+  font-family: "Azonix", sans-serif;
+}
