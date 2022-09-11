@@ -1,37 +1,62 @@
-.logo-container {
+.fade-in-image {
   z-index: 0;
   width: 700px;
   height: 609px;
-  opacity: 0;
+  opacity: 1;
   position: absolute;
   top: 0;
   right: 15%;
   bottom: 0;
   left: auto;
   margin: auto;
+  opacity: 0;
+  animation: fadeIn;
+  animation-duration: 5s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  transform: rotateZ(10deg) !important;
 
-  svg {
-    width: -100%;
-    height: auto;
-    bottom: 0;
-    transform: rotateZ(10deg) !important;
-  }
-
-  .solid-logo {
-    position: absolute;
-    top: auto;
-    right: auto;
-    bottom: auto;
-    left: 0;
-    margin: auto;
+  img {
     width: 100%;
-    opacity: 0.4;
-    transform: rotateZ(10deg) !important;
-    z-index: 1;
+    height: auto;
+    opacity: 0.8;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
-}
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &::before {
+    left: -10px;
+    opacity: 0.6;
+    animation: glitch-effect 4s infinite linear alternate-reverse;
+    background-image: url(../../../assets/images/logo-g-blue.png);
+  }
+  &::after {
+    left: 10px;
+    opacity: 0.6;
+    animation: glitch-effect 3s infinite linear alternate-reverse;
+    background-image: url(../../../assets/images/logo-g-red.png);
+  }
+  $steps: 7;
 
-.svg-container {
-  stroke: #ff2010;
-  stroke-width: 10;
+  @keyframes glitch-effect {
+    @for $i from 0 through $steps {
+      #{percentage($i*(1/$steps))} {
+        clip: rect(random(700) + px, 700px, random(700) + px, 0);
+      }
+    }
+  }
 }
