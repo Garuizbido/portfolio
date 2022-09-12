@@ -1,6 +1,7 @@
 import "./index.scss";
 import Sidebar from "../Sidebar";
 import { Outlet } from "react-router-dom";
+import backgroundVideo from "../../assets/images/backvid.mov";
 
 const Layout = () => {
   return (
@@ -15,6 +16,9 @@ const Layout = () => {
           <span className="bottom-tag-html">&lt;/html&gt;</span>
         </span>
       </div>
+      <video autoPlay loop muted id="video">
+        <source src={backgroundVideo} />
+      </video>
     </div>
   );
 };

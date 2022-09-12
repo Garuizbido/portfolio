@@ -1,6 +1,7 @@
 import "./index.scss";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Loader from "react-loaders";
 
 import Logo from "../../assets/images/logo-g.png";
 import LogoAnimation from "./Logo";
@@ -54,36 +55,41 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="container home-page">
-      <div className="text-zone">
-        <h1>
-          <AnimatedLetters
-            letterClass={letterClass}
-            strArray={greetingArray}
-            idx={12}
-          />
-          <br />
-          <span className={`${letterClass} _27`}>I</span>
-          <span className={`${letterClass} _28`}>'m</span>
-          <img src={Logo} alt="developer" />
-          <AnimatedLetters
-            letterClass={letterClass}
-            strArray={nameArray}
-            idx={29}
-          />
-          <br />
-          <AnimatedLetters
-            letterClass={letterClass}
-            strArray={jobArray}
-            idx={35}
-          />
-        </h1>
-        <Link to="/contact" className="flat-button">
-          CONTACT ME
-        </Link>
+    <>
+      <div className="container home-page">
+        <div className="text-zone">
+          <h1>
+            <AnimatedLetters
+              letterClass={letterClass}
+              strArray={greetingArray}
+              idx={12}
+            />
+            <br />
+            <span className={`${letterClass} _27`}>I</span>
+            <span className={`${letterClass} _28`}>'m</span>
+            <img src={Logo} alt="developer" />
+            <AnimatedLetters
+              letterClass={letterClass}
+              strArray={nameArray}
+              idx={29}
+            />
+            <br />
+            <AnimatedLetters
+              letterClass={letterClass}
+              strArray={jobArray}
+              idx={35}
+            />
+          </h1>
+          <div>
+            <Link to="/portfolio/contact" className="flat-button">
+              CONTACT ME
+            </Link>
+          </div>
+        </div>
+        <LogoAnimation />
       </div>
-      <LogoAnimation />
-    </div>
+      <Loader type="pacman" />
+    </>
   );
 };
 
