@@ -6,24 +6,25 @@ import About from "./components/About";
 import Home from "./components/Home";
 import Contact from "./components/Contact";
 import Skills from "./components/Skills";
+import Projects from "./components/Projects";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/portfolio" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
         </Route>
-        <Route path="/portfolio/about" element={<Layout />}>
+        <Route path="/about" element={<Layout />}>
           <Route index element={<About />} />
         </Route>
-        <Route path="/portfolio/skills" element={<Layout />}>
+        <Route path="/skills" element={<Layout />}>
           <Route index element={<Skills />} />
         </Route>
-        <Route path="/portfolio/projects" element={<Layout />}>
-          <Route index element={<About />} />
+        <Route path="/projects" element={<Layout />}>
+          <Route index element={<Projects />} />
         </Route>
-        <Route path="/portfolio/contact" element={<Layout />}>
+        <Route path="/contact" element={<Layout />}>
           <Route index element={<Contact />} />
         </Route>
       </Routes>

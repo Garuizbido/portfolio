@@ -5,7 +5,7 @@
   opacity: 1;
   position: absolute;
   top: 0;
-  right: 6%;
+  right: 4%;
   bottom: 0;
   left: auto;
   margin: auto;
@@ -19,7 +19,7 @@
   img {
     width: 100%;
     height: auto;
-    opacity: 0.8;
+    opacity: 0.6;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -41,7 +41,7 @@
   &::before {
     left: -10px;
     opacity: 0.6;
-    animation: glitch-effect 4s infinite linear alternate-reverse;
+    animation: glitch-effect 2s infinite linear alternate-reverse;
     background-image: url(../../../assets/images/logo-g-blue.png);
   }
   &::after {

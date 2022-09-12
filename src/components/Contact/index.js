@@ -86,6 +86,15 @@ const Contact = () => {
             </form>
           </div>
         </div>
+        <div className="info-map">
+          Gabriel Ruiz,
+          <br />
+          Miami, FL
+          <br />
+          United States,
+          <br />
+          <span>garuizbido@gmail.com</span>
+        </div>
         <div className="map-wrap">
           <MapContainer
             center={[25.708883110401665, -80.28583606024401]}

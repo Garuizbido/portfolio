@@ -5,11 +5,10 @@ import Loader from "react-loaders";
 import AnimatedLetters from "../AnimatedLetters";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHtml5,
   faJava,
   faJsSquare,
   faPython,
-  faReact,
+  faSwift,
 } from "@fortawesome/free-brands-svg-icons";
 import { faC } from "@fortawesome/free-solid-svg-icons";
 
@@ -40,7 +39,7 @@ const About = () => {
         <div className="stage-cube-container">
           <div className="cube-spinner">
             <div className="face1">
-              <FontAwesomeIcon icon={faReact} size="4x" />
+              <FontAwesomeIcon icon={faSwift} size="4x" />
             </div>
             <div className="face2">
               <FontAwesomeIcon icon={faJsSquare} size="4x" />
@@ -55,7 +54,8 @@ const About = () => {
               <FontAwesomeIcon icon={faC} size="4x" />
             </div>
             <div className="face6">
-              <FontAwesomeIcon icon={faHtml5} size="4x" />
+              <FontAwesomeIcon icon={faC} size="3x" />
+              <i>++</i>
             </div>
           </div>
         </div>
