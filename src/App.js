@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import About from "./components/About";
 import Home from "./components/Home";
 import Contact from "./components/Contact";
+import Skills from "./components/Skills";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route index element={<About />} />
         </Route>
         <Route path="/portfolio/skills" element={<Layout />}>
-          <Route index element={<About />} />
+          <Route index element={<Skills />} />
         </Route>
         <Route path="/portfolio/projects" element={<Layout />}>
           <Route index element={<About />} />
