@@ -87,11 +87,11 @@ const Contact = () => {
           </div>
         </div>
         <div className="info-map">
-          Gabriel Ruiz,
+          Gabriel Ruiz
           <br />
-          Miami, FL
+          Miami, Fl
           <br />
-          United States,
+          United States
           <br />
           <span>garuizbido@gmail.com</span>
         </div>
@@ -102,6 +102,8 @@ const Contact = () => {
             scrollWheelZoom={false}
             zoomControl={false}
             dragging={false}
+            doubleClickZoom={false}
+            touchZoom={false}
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             <Marker position={[25.708883110401665, -80.28583606024401]} />
