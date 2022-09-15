@@ -1,5 +1,6 @@
 import "./index.scss";
 import { useState, useEffect } from "react";
+import TagCloud from "./TagCloud";
 
 import AnimatedLetters from "../AnimatedLetters";
 
@@ -26,6 +27,7 @@ const Skills = () => {
         <p>test2</p>
         <p>test3</p>
       </div>
+      <TagCloud />
     </div>
   );
 };

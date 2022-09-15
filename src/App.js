@@ -8,6 +8,9 @@ import Contact from "./components/Contact";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 
+import SortingAlg from "./components/Projects/projects/SortingAlg";
+import Sidebar from "./components/Sidebar";
+
 function App() {
   return (
     <>
@@ -26,6 +29,9 @@ function App() {
         </Route>
         <Route path="/contact" element={<Layout />}>
           <Route index element={<Contact />} />
+        </Route>
+        <Route path="/projects/sorting" element={<Sidebar />}>
+          <Route index element={<SortingAlg />} />
         </Route>
       </Routes>
     </>
