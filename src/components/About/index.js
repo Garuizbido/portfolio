@@ -10,6 +10,7 @@ import {
   faPython,
   faSwift,
 } from "@fortawesome/free-brands-svg-icons";
+import Cpp from "../../assets/images/c-.png";
 import { faC } from "@fortawesome/free-solid-svg-icons";
 
 const About = () => {
@@ -32,9 +33,28 @@ const About = () => {
               idx={15}
             />
           </h1>
-          <p>test1</p>
-          <p>test2</p>
-          <p>test3</p>
+          <p>
+            I'm an enthusiastic developer that enjoys the art of coding. I
+            consider myslef
+            <br /> an ambitious, prolific and goal-oriented person.
+            Nevertheless, I also value the
+            <br /> journey more than the destination, as I enjoy the learning
+            process thoroughly.
+          </p>
+          <p>
+            {" "}
+            I am still a novice, however I am quitely confident in my skills and
+            creativity,
+            <br /> as well as my problem solving capabilities. While I can
+            appreciate the art, I <br />
+            also enjoy the technical aspect. As an engineer, I always strive to
+            better <br /> myself in both work and life.
+          </p>
+          <p>
+            I thoroughly enjoy takling new problems head on, as well as learning
+            from <br />
+            these experiences.
+          </p>
         </div>
         <div className="stage-cube-container">
           <div className="cube-spinner">
@@ -54,8 +74,7 @@ const About = () => {
               <FontAwesomeIcon icon={faC} size="4x" />
             </div>
             <div className="face6">
-              <FontAwesomeIcon icon={faC} size="3x" />
-              <i>++</i>
+              <img src={Cpp} alt="" width="400"></img>
             </div>
           </div>
         </div>
