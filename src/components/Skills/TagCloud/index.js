@@ -4,14 +4,14 @@ import TagCloud from "TagCloud";
 
 function About() {
   const options = {
-    radius: 500,
-    maxSpeed: "medium",
-    initSpeed: "fast",
+    radius: 600,
+    maxSpeed: "fast",
+    initSpeed: "medium",
     direction: 135,
     keep: true,
   };
 
-  const myTags = [
+  const skills = [
     "JavaScript",
     "CSS",
     "HTML",
@@ -29,12 +29,16 @@ function About() {
     "Subversion",
     "JSON",
     "PyScript",
+    "Node",
+    "Typescript",
+    "SQL",
+    "MongoDB",
   ];
 
-  TagCloud(".content", myTags, options);
+  TagCloud(".content", skills, options);
 
   return (
-    <div className="tag-cloud">
+    <div className="cload-container">
       <span className="content"></span>
     </div>
   );

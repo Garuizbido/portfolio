@@ -1,16 +1,16 @@
-.tag-cloud {
+.cload-container {
   z-index: 9;
   size: 100%;
   cursor: default;
-  margin-top: 100px;
+  margin-top: 10px;
   position: relative;
-  left: 50%;
+  left: 40%;
   color: #fff;
   font-weight: 800;
   position: absolute;
-
-  .content {
-    font-size: 30px;
-    font-family: "Azonix";
-  }
+  font-size: 30px;
+  font-family: "Azonix";
+  opacity: 0%;
+  animation: fadeIn 1s ease-in-out 3s;
+  animation-fill-mode: forwards;
 }

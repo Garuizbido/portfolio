@@ -1,5 +1,6 @@
 import "./index.scss";
 import { useState, useEffect } from "react";
+import Loader from "react-loaders";
 
 import AnimatedLetters from "../AnimatedLetters";
 
@@ -23,6 +24,7 @@ const Projects = () => {
           />
         </h1>
       </div>
+      <Loader type="pacman" />
     </div>
   );
 };

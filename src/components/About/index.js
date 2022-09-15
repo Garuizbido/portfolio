@@ -11,7 +11,7 @@ import {
   faSwift,
 } from "@fortawesome/free-brands-svg-icons";
 import Cpp from "../../assets/images/c-.png";
-import { faC } from "@fortawesome/free-solid-svg-icons";
+import C from "../../assets/images/c.png";
 
 const About = () => {
   const [letterClass, setLetterClass] = useState("text-animate");
@@ -51,9 +51,9 @@ const About = () => {
             better <br /> myself in both work and life.
           </p>
           <p>
-            I thoroughly enjoy takling new problems head on, as well as learning
-            from <br />
-            these experiences.
+            I thoroughly enjoy takling new problems head on and venturing on new
+            <br />
+            endeavors, as well as learning from these experiences.
           </p>
         </div>
         <div className="stage-cube-container">
@@ -71,10 +71,10 @@ const About = () => {
               <FontAwesomeIcon icon={faPython} size="4x" />
             </div>
             <div className="face5">
-              <FontAwesomeIcon icon={faC} size="4x" />
+              <img src={Cpp} alt="" width="400"></img>
             </div>
             <div className="face6">
-              <img src={Cpp} alt="" width="400"></img>
+              <img src={C} alt="" width="440"></img>
             </div>
           </div>
         </div>

@@ -49,7 +49,13 @@ const Contact = () => {
               idx={15}
             />
           </h1>
-          <p>Test</p>
+          <p>
+            I am always interested in learning and experiencing more. Whether
+            for freelancing or hire,
+            <br /> I am interested in any opportunities. For any questions,
+            requests or concerns, don't <br />
+            hesitate to contact me using the form below.
+          </p>
           <div className="contact-form">
             <form ref={form} onSubmit={sendEmail}>
               <ul>
