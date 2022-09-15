@@ -8,16 +8,20 @@ import {
   faUser,
   faFolder,
   faLightbulb,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { useState } from "react";
 
 const Sidebar = () => {
+  const [showNav, setShowNav] = useState(false);
+  console.log();
   return (
     <div className="nav-bar">
       <Link className="logo" to="/">
         <img src={LogoG} alt="logo" />
       </Link>
-      <nav>
+      <nav className={showNav ? "mobile-show" : ""}>
         <NavLink
           exact="true"
           activeclassname="active"
@@ -58,6 +62,15 @@ const Sidebar = () => {
         >
           <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
         </NavLink>
+        <FontAwesomeIcon
+          icon={faBars}
+          color="#ff2010"
+          size="3x"
+          className="hamburger-icon"
+          onClick={() => {
+            setShowNav(false);
+          }}
+        />
       </nav>
       <ul>
         <li>
@@ -79,6 +92,15 @@ const Sidebar = () => {
           </a>
         </li>
       </ul>
+      <FontAwesomeIcon
+        icon={faBars}
+        color="#ff2010"
+        size="3x"
+        className="hamburger-icon"
+        onClick={() => {
+          setShowNav(true);
+        }}
+      />
     </div>
   );
 };

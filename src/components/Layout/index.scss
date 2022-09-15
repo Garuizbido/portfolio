@@ -119,3 +119,17 @@
   z-index: -1;
   width: 100%;
 }
+
+@media screen and (max-width: 1200px) {
+  .page {
+    position: initial;
+  }
+
+  .container {
+    .container {
+      position: initial;
+      height: auto;
+      min-height: auto;
+    }
+  }
+}

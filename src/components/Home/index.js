@@ -25,6 +25,7 @@ const Home = () => {
     "l",
     "e",
     "r",
+    ",",
   ];
 
   const nameArray = ["a", "b", "r", "i", "e", "l"];
