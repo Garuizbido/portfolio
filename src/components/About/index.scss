@@ -30,6 +30,7 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 10px 0px lightyellow;
+    z-index: 1;
   }
 
   .face1 {
@@ -109,6 +110,7 @@
     div {
       width: 250px;
       height: 250px;
+      display: initial;
     }
     .face1 {
       transform: translateZ(125px);
