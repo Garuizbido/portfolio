@@ -3,13 +3,6 @@ import { useEffect, useState } from "react";
 import Loader from "react-loaders";
 
 import AnimatedLetters from "../AnimatedLetters";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faJava,
-  faJsSquare,
-  faPython,
-  faSwift,
-} from "@fortawesome/free-brands-svg-icons";
 import Cpp from "../../assets/images/c-.png";
 import C from "../../assets/images/c.png";
 import Python from "../../assets/images/python.png";
