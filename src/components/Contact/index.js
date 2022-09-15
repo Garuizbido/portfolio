@@ -50,8 +50,8 @@ const Contact = () => {
             />
           </h1>
           <p>
-            I am always interested in learning and experiencing more. Whether
-            for freelancing or hire,
+            I am always eager to learn and experience more. Whether for
+            freelancing or hire,
             <br /> I am interested in any opportunities. For any questions,
             requests or concerns, don't <br />
             hesitate to contact me using the form below.
