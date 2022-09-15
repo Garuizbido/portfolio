@@ -51,10 +51,9 @@ const Contact = () => {
           </h1>
           <p>
             I am always eager to learn and experience more. Whether for
-            freelancing or hire,
-            <br /> I am interested in any opportunities. For any questions,
-            requests or concerns, don't <br />
-            hesitate to contact me using the form below.
+            freelancing or hire, I am interested in any opportunities. For any
+            questions, requests or concerns, don't hesitate to contact me using
+            the form below.
           </p>
           <div className="contact-form">
             <form ref={form} onSubmit={sendEmail}>

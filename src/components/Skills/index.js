@@ -26,23 +26,17 @@ const Skills = () => {
         </h1>
         <p>
           Software engineer with an array of tools at my disposal. I consider
-          <br />
           myself a fullstack developer as I enjoy both front and back ends.
         </p>
         <p>
           I have extensive experience in object oriented languages, and I pry
-          <br />
           myself in my most important skill, problem solving. I believe that
-          tools
-          <br /> have to be used effectively in order for the project to work
-          properly,
-          <br /> therefore problem solving is the most important ability any
-          developer
-          <br /> could have.
+          tools have to be used effectively in order for the project to work
+          properly, therefore problem solving is the most important ability any
+          developer could have.
         </p>
         <p>
           While I am proud of my tools, skills and knowledge, I always seek out
-          <br />
           to learn more if possible, as well as utilize my knowledge in any way
           I can.
         </p>

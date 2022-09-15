@@ -137,11 +137,19 @@
 
 @media screen and (max-width: 1200px) {
   .nav-bar {
-    background: transparent;
+    background-color: #000000;
     position: initial;
-    height: auto;
+    width: 100%;
+    height: 45px;
     min-height: auto;
 
+    .logo {
+      margin-left: 5px;
+      img {
+        margin: 0;
+        width: 35px;
+      }
+    }
     ul,
     nav {
       display: none;
@@ -154,7 +162,7 @@
       top: 0;
       left: 0;
       position: fixed;
-      z-index: 2;
+      z-index: 100;
       margin: 0;
 
       a {
@@ -174,14 +182,9 @@
       a svg {
         opacity: 1 !important;
       }
-      a.active {
-        svg {
-          color: #ff2010;
-        }
-      }
 
       &.mobile-show {
-        display: block;
+        display: block !important;
       }
     }
 
@@ -189,8 +192,9 @@
       cursor: pointer;
       display: block;
       position: absolute;
-      top: 15px;
+      top: 6px;
       right: 15px;
+      width: 35px;
     }
   }
 }

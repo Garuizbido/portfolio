@@ -14,3 +14,13 @@
   animation: fadeIn 1s ease-in-out 3s;
   animation-fill-mode: forwards;
 }
+
+.list-container {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .cload-container {
+    display: none;
+  }
+}

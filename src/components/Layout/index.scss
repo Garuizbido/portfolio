@@ -126,10 +126,28 @@
   }
 
   .container {
-    .container {
-      position: initial;
-      height: auto;
-      min-height: auto;
+    position: initial;
+    height: auto;
+    min-height: auto;
+
+    &.container.contact-page,
+    &.container.about-page,
+    &.container.portfolio-page {
+      h1 {
+        padding-left: 10px;
+      }
+      h1::after,
+      h1::before {
+        display: none;
+      }
+      .text-zone {
+        position: initial;
+        transform: none;
+        width: 100%;
+        display: block;
+        padding: 24px;
+        box-sizing: border-box;
+      }
     }
   }
 }
