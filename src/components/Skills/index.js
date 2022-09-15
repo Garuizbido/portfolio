@@ -27,7 +27,9 @@ const Skills = () => {
         <p>test2</p>
         <p>test3</p>
       </div>
-      <TagCloud />
+      <div className="tag-cloud-container">
+        <TagCloud />
+      </div>
     </div>
   );
 };
