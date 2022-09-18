@@ -1,10 +1,25 @@
 import "./index.scss";
 import React from "react";
+import { useState, useEffect } from "react";
 import Sketch from "react-p5";
 
 const Array = ({ array, algorithm }) => {
-  const width = 2000;
-  const height = 1000;
+  const [p5, setP5] = useState();
+
+  useEffect(() => {
+    window.addEventListener("resize", windowResized);
+
+    return () => window.removeEventListener("resize", windowResized);
+  }, []);
+
+  function windowResized() {
+    if (p5) {
+      p5.resizeCanvas(window.innerWidth, window.innerHeight);
+    }
+  }
+
+  const width = window.innerWidth - 150;
+  const height = window.innerHeight - 500;
 
   let start = false;
 
@@ -17,8 +32,8 @@ const Array = ({ array, algorithm }) => {
   let rect_width = width / values.length;
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  async function swap(i, j) {
-    await sleep(2);
+
+  function swap(i, j) {
     let temp = values[i];
     values[i] = values[j];
     values[j] = temp;
@@ -31,10 +46,10 @@ const Array = ({ array, algorithm }) => {
     for (let j = low; j <= high - 1; j++) {
       if (values[j] < pivot) {
         i++;
-        await swap(i, j);
+        swap(i, j);
       }
     }
-    await swap(i + 1, high);
+    swap(i + 1, high);
     return i + 1;
   }
 
