@@ -8,6 +8,8 @@ import Contact from "./components/Contact";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 
+import Sorting from "./components/Projects/components/Sorting";
+
 function App() {
   return (
     <>
@@ -23,6 +25,9 @@ function App() {
         </Route>
         <Route path="/projects" element={<Layout />}>
           <Route index element={<Projects />} />
+        </Route>
+        <Route path="/projects/sorting" element={<Layout />}>
+          <Route index element={<Sorting />} />
         </Route>
         <Route path="/contact" element={<Layout />}>
           <Route index element={<Contact />} />

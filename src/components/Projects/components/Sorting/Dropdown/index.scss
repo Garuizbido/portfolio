@@ -1,0 +1,18 @@
+.dropdown-container {
+  select {
+    cursor: pointer;
+    appearance: none;
+    font-family: "Azonix";
+    outline: none;
+    background-color: transparent;
+    border: none;
+    background: none;
+    align-self: center;
+    width: 100%;
+    color: #fff;
+    font-size: 20px;
+    &:hover {
+      color: #cc1609;
+    }
+  }
+}
