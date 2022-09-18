@@ -18,8 +18,8 @@ const Array = ({ array, algorithm }) => {
     }
   }
 
-  const width = window.innerWidth - 150;
-  const height = window.innerHeight - 500;
+  const width = window.innerWidth * 0.94;
+  const height = window.innerHeight * 0.55;
 
   let start = false;
 
@@ -46,6 +46,7 @@ const Array = ({ array, algorithm }) => {
     for (let j = low; j <= high - 1; j++) {
       if (values[j] < pivot) {
         i++;
+        await sleep(20);
         swap(i, j);
       }
     }
@@ -56,11 +57,12 @@ const Array = ({ array, algorithm }) => {
   async function quickSort(low, high) {
     if (high < low) return;
     let pi = await partition(low, high);
-    await Promise.all([quickSort(low, pi - 1), quickSort(pi + 1, high)]);
+    await quickSort(low, pi - 1);
+    await quickSort(pi + 1, high);
   }
 
   async function merge(low, mid, high) {
-    await sleep(50);
+    await sleep(20);
     let index1 = low;
     let index2 = mid;
     let storageIndex = low;
@@ -107,10 +109,8 @@ const Array = ({ array, algorithm }) => {
   function bubbleSort() {
     for (let k = 0; k < 8; k++) {
       if (i < values.length) {
-        let temp = values[j];
         if (values[j] > values[j + 1]) {
-          values[j] = values[j + 1];
-          values[j + 1] = temp;
+          swap(j, j + 1);
         }
         j++;
 
@@ -124,7 +124,13 @@ const Array = ({ array, algorithm }) => {
 
   function simulateSorting(p5) {
     for (let i = 0; i < values.length; i++) {
-      p5.rect(i * rect_width, height, rect_width, -values[i] * 1.5, 20);
+      p5.rect(
+        i * rect_width,
+        height,
+        rect_width,
+        -values[i] * (height / 500),
+        20
+      );
     }
   }
 
@@ -133,11 +139,17 @@ const Array = ({ array, algorithm }) => {
   };
 
   const draw = (p5) => {
-    p5.background(220);
+    p5.clear();
     p5.stroke(100, 143, 143);
-    p5.fill(50);
+    p5.fill(220);
 
-    if (p5.mouseIsPressed) {
+    if (
+      p5.mouseIsPressed &&
+      p5.mouseY <= height &&
+      p5.mouseY >= 0 &&
+      p5.mouseX <= width &&
+      p5.mouseX >= 0
+    ) {
       start = true;
     }
     if (start) {

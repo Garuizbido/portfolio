@@ -1,8 +1,38 @@
 import "./index.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Dropdown from "./Dropdown";
 import Array from "./Array";
+import AnimatedLetters from "../../../AnimatedLetters";
+
+const logo = [
+  "s",
+  "o",
+  "r",
+  "t",
+  "i",
+  "n",
+  "g",
+  " ",
+  "a",
+  "l",
+  "g",
+  "o",
+  "i",
+  "t",
+  "h",
+  " ",
+  "v",
+  "i",
+  "s",
+  "u",
+  "a",
+  "l",
+  "i",
+  "z",
+  "e",
+  "r",
+];
 
 const algorithms = [
   { label: "Bubble Sort", value: "bubble" },
@@ -26,6 +56,7 @@ const sizes = [
 ];
 
 const Sorting = () => {
+  const [letterClass, setLetterClass] = useState("text-animate");
   const [algorithm, setAlgorithm] = useState("bubble");
   const [size, setSize] = useState(25);
   const [array, setArray] = useState([]);
@@ -42,11 +73,19 @@ const Sorting = () => {
     setArray(createArray);
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLetterClass("text-animate-hover");
+    }, 3500);
+  }, []);
+
   return (
     <div className="sorting-container">
       <div className="topbar-container">
-        <input type="button" value="Randomize" onClick={handleArray} />
-        <h1>Sorting Algorithm Visualizer</h1>
+        <h1>
+          <AnimatedLetters letterClass={letterClass} strArray={logo} idx={12} />
+        </h1>
+
         <div className="algorithm-dropdown">
           <h2>Algorithm:</h2>
           <Dropdown
@@ -67,6 +106,7 @@ const Sorting = () => {
             }}
           />
         </div>
+        <input type="button" value="Randomize" onClick={handleArray} />
       </div>
       <div className="array-container">
         <Array array={array} algorithm={algorithm} />
