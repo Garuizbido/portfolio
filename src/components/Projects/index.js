@@ -14,18 +14,20 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className="container projects-page">
-      <div className="text-zone">
-        <h1>
-          <AnimatedLetters
-            letterClass={letterClass}
-            strArray={["m", "y", " ", "p", "r", "o", "j", "e", "c", "t", "s"]}
-            idx={15}
-          />
-        </h1>
+    <>
+      <div className="container projects-page">
+        <div className="text-zone">
+          <h1>
+            <AnimatedLetters
+              letterClass={letterClass}
+              strArray={["m", "y", " ", "p", "r", "o", "j", "e", "c", "t", "s"]}
+              idx={15}
+            />
+          </h1>
+        </div>
       </div>
       <Loader type="pacman" />
-    </div>
+    </>
   );
 };
 
