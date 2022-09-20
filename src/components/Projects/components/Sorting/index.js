@@ -36,8 +36,10 @@ const logo = [
 
 const algorithms = [
   { label: "Bubble Sort", value: "bubble" },
-  { label: "Quick Sort", value: "quick" },
+  { label: "Insertion Sort", value: "insertion" },
   { label: "Merge Sort", value: "merge" },
+  { label: "Quick Sort", value: "quick" },
+  { label: "Selection Sort", value: "selection" },
 ];
 
 const sizes = [
@@ -76,7 +78,7 @@ const Sorting = () => {
   useEffect(() => {
     setTimeout(() => {
       setLetterClass("text-animate-hover");
-    }, 3500);
+    }, 4500);
   }, []);
 
   return (

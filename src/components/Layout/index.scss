@@ -43,6 +43,7 @@
 .container.about-page,
 .container.portfolio-page {
   h1 {
+    z-index: 1;
     cursor: default;
     font-size: 53px;
     font-family: "Azonix";
@@ -115,10 +116,10 @@
 }
 
 #video {
-  position: absolute;
   z-index: -1;
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0.4;
 }
 
 @media screen and (max-width: 1200px) {

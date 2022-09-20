@@ -16,6 +16,10 @@ const Layout = () => {
           <span className="bottom-tag-html">&lt;/html&gt;</span>
         </span>
       </div>
+      <video autoPlay loop muted id="video">
+        <source src={backgroundVideo} />
+      </video>
+      *
     </div>
   );
 };

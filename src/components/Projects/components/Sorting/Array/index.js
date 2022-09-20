@@ -18,7 +18,7 @@ const Array = ({ array, algorithm }) => {
     }
   }
 
-  const width = window.innerWidth * 0.94;
+  const width = window.innerWidth * 0.92;
   const height = window.innerHeight * 0.55;
 
   let start = false;
@@ -33,7 +33,38 @@ const Array = ({ array, algorithm }) => {
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  function swap(i, j) {
+  async function selectionSort(n) {
+    var i, j, min_idx;
+
+    for (i = 0; i < n - 1; i++) {
+      await sleep(50);
+      min_idx = i;
+      for (j = i + 1; j < n; j++) if (values[j] < values[min_idx]) min_idx = j;
+      swap(min_idx, i);
+    }
+  }
+
+  async function insertionSort(n) {
+    let i, key, j;
+    for (i = 1; i < n; i++) {
+      await sleep(50);
+      key = values[i];
+      j = i - 1;
+      while (j >= 0 && values[j] > key) {
+        values[j + 1] = values[j];
+        j = j - 1;
+      }
+      values[j + 1] = key;
+    }
+  }
+
+  async function swap(i, j) {
+    let temp = values[i];
+    values[i] = values[j];
+    values[j] = temp;
+  }
+
+  async function swapQuick(i, j) {
     let temp = values[i];
     values[i] = values[j];
     values[j] = temp;
@@ -42,23 +73,20 @@ const Array = ({ array, algorithm }) => {
   async function partition(low, high) {
     let pivot = values[high];
     let i = low - 1;
-
     for (let j = low; j <= high - 1; j++) {
       if (values[j] < pivot) {
         i++;
-        await sleep(20);
-        swap(i, j);
+        await swapQuick(i, j);
       }
     }
-    swap(i + 1, high);
+    await swapQuick(i + 1, high);
     return i + 1;
   }
 
   async function quickSort(low, high) {
     if (high < low) return;
     let pi = await partition(low, high);
-    await quickSort(low, pi - 1);
-    await quickSort(pi + 1, high);
+    await Promise.all([quickSort(low, pi - 1), quickSort(pi + 1, high)]);
   }
 
   async function merge(low, mid, high) {
@@ -156,6 +184,8 @@ const Array = ({ array, algorithm }) => {
       if (algorithm === "bubble") bubbleSort();
       if (algorithm === "quick") quickSort(0, values.length - 1);
       if (algorithm === "merge") mergeSort(0, values.length);
+      if (algorithm === "insertion") insertionSort(values.length);
+      if (algorithm === "selection") selectionSort(values.length);
     }
     simulateSorting(p5);
   };
