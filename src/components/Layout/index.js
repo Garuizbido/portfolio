@@ -19,7 +19,6 @@ const Layout = () => {
       <video autoPlay loop muted id="video">
         <source src={backgroundVideo} />
       </video>
-      *
     </div>
   );
 };
