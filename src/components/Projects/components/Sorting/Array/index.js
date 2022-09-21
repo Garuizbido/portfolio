@@ -21,26 +21,35 @@ const Array = ({ array, algorithm }) => {
   const width = window.innerWidth * 0.94;
   const height = window.innerHeight * 0.5;
 
-  let start = false;
+  let values = array;
 
   let storage = [];
 
-  let values = array;
-  let i = 0;
-  let j = 0;
+  let states = [];
+
+  for (let x = 0; x < values.length; x++);
+  states.push(-1);
 
   let rect_width = width / values.length;
 
-  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function swap(i, j) {
+    await sleep(2);
+    let temp = values[i];
+    values[i] = values[j];
+    values[j] = temp;
+  }
 
   async function selectionSort(n) {
     var i, j, min_idx;
 
     for (i = 0; i < n - 1; i++) {
-      await sleep(50);
       min_idx = i;
       for (j = i + 1; j < n; j++) if (values[j] < values[min_idx]) min_idx = j;
-      swap(min_idx, i);
+      await swap(min_idx, i);
     }
   }
 
@@ -58,35 +67,36 @@ const Array = ({ array, algorithm }) => {
     }
   }
 
-  async function swap(i, j) {
-    let temp = values[i];
-    values[i] = values[j];
-    values[j] = temp;
-  }
-
-  async function swapQuick(i, j) {
-    let temp = values[i];
-    values[i] = values[j];
-    values[j] = temp;
-  }
-
   async function partition(low, high) {
-    let pivot = values[high];
-    let i = low - 1;
-    for (let j = low; j <= high - 1; j++) {
-      if (values[j] < pivot) {
-        i++;
-        await swapQuick(i, j);
+    for (let i = low; i < high; i++) {
+      states[i] = 1;
+    }
+    let pivotIndex = low;
+    let pivotValue = values[high];
+    states[pivotIndex] = 0;
+    for (let i = low; i < high; i++) {
+      if (values[i] < pivotValue) {
+        await swap(i, pivotIndex);
+        states[pivotIndex] = -1;
+        pivotIndex++;
+        states[pivotIndex] = 0;
       }
     }
-    await swapQuick(i + 1, high);
-    return i + 1;
+    await swap(pivotIndex, high);
+    for (let i = low; i < high; i++) {
+      states[i] = -1;
+    }
+
+    return pivotIndex;
   }
 
   async function quickSort(low, high) {
-    if (high < low) return;
-    let pi = await partition(low, high);
-    await Promise.all([quickSort(low, pi - 1), quickSort(pi + 1, high)]);
+    if (low >= high) {
+      return;
+    }
+    let index = await partition(low, high);
+    states[index] = -1;
+    await Promise.all([quickSort(low, index - 1), quickSort(index + 1, high)]);
   }
 
   async function merge(low, mid, high) {
@@ -134,24 +144,28 @@ const Array = ({ array, algorithm }) => {
     }
   }
 
-  function bubbleSort() {
-    for (let k = 0; k < 8; k++) {
-      if (i < values.length) {
+  async function bubbleSort(n) {
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n - i - 1; j++) {
         if (values[j] > values[j + 1]) {
-          swap(j, j + 1);
-        }
-        j++;
-
-        if (j >= values.length - i - 1) {
-          j = 0;
-          i++;
+          await swap(j, j + 1);
         }
       }
     }
   }
 
   function simulateSorting(p5) {
+    p5.stroke(100, 143, 143);
+    p5.fill(220);
     for (let i = 0; i < values.length; i++) {
+      if (states[i] === 0) {
+        p5.fill(255, 0, 0);
+      } else if (states[i] === 1) {
+        p5.fill(100, 200, 50);
+      } else {
+        p5.fill(255);
+      }
+
       p5.rect(
         i * rect_width,
         height,
@@ -162,34 +176,29 @@ const Array = ({ array, algorithm }) => {
     }
   }
 
+  function startSort() {
+    if (algorithm === "bubble") bubbleSort(values.length);
+    if (algorithm === "quick") quickSort(0, values.length - 1);
+    if (algorithm === "merge") mergeSort(0, values.length);
+    if (algorithm === "insertion") insertionSort(values.length);
+    if (algorithm === "selection") selectionSort(values.length);
+  }
+
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(width, height).parent(canvasParentRef);
   };
 
   const draw = (p5) => {
     p5.clear();
-    p5.stroke(100, 143, 143);
-    p5.fill(220);
 
-    if (
-      p5.mouseIsPressed &&
-      p5.mouseY <= height &&
-      p5.mouseY >= 0 &&
-      p5.mouseX <= width &&
-      p5.mouseX >= 0
-    ) {
-      start = true;
-    }
-    if (start) {
-      if (algorithm === "bubble") bubbleSort();
-      if (algorithm === "quick") quickSort(0, values.length - 1);
-      if (algorithm === "merge") mergeSort(0, values.length);
-      if (algorithm === "insertion") insertionSort(values.length);
-      if (algorithm === "selection") selectionSort(values.length);
-    }
     simulateSorting(p5);
   };
-  return <Sketch setup={setup} draw={draw} />;
+  return (
+    <>
+      <Sketch setup={setup} draw={draw} />
+      <input className="play-button" type="button" onClick={startSort} />
+    </>
+  );
 };
 
 export default Array;

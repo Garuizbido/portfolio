@@ -119,7 +119,7 @@ const Sorting = () => {
           1. Choose Sorting Algorithm <br />
           2. Choose algorithm size <br />
           3. Click Randomize <br />
-          4. Click anywhere on graph to run.
+          4. Click play button to run.
         </p>
       </div>
     </div>
