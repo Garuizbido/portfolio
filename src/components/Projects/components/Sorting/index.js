@@ -113,6 +113,15 @@ const Sorting = () => {
       <div className="array-container">
         <Array array={array} algorithm={algorithm} />
       </div>
+      <div className="instructions-container">
+        <p>
+          Instructions: <br />
+          1. Choose Sorting Algorithm <br />
+          2. Choose algorithm size <br />
+          3. Click Randomize <br />
+          4. Click anywhere on graph to run.
+        </p>
+      </div>
     </div>
   );
 };

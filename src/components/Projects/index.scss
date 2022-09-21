@@ -1,4 +1,6 @@
 .container.projects-page {
+  overflow-x: hidden;
+  overflow-y: scroll;
   h1 {
     cursor: default;
     font-size: 53px;
@@ -47,7 +49,7 @@
     flex-wrap: wrap;
     padding-bottom: 100px;
     margin-top: 3%;
-    margin-left: 6%;
+    margin-left: 4%;
 
     .image-box {
       position: relative;
@@ -55,7 +57,12 @@
       height: 400px;
       overflow: hidden;
       border-radius: 10px;
-      max-width: calc(25% - 10px);
+      max-width: calc(24.5% - 10px);
+      opacity: 0;
+      animation: fadeIn;
+      animation-duration: 1s;
+      animation-delay: 3s;
+      animation-fill-mode: forwards;
 
       .portfolio-image {
         position: absolute;
@@ -119,7 +126,7 @@
 
       &:after {
         content: "";
-        background: linear-gradient(0deg, #000 80%, #ff20109d 100%);
+        background: linear-gradient(0deg, #000 60%, #ff11005e 100%);
         position: absolute;
         left: 0;
         right: 0;
@@ -141,10 +148,10 @@
         background: transparent;
       }
     }
-  }
-
-  .image-box {
-    position: relative;
-    flex: 1 1 20%;
+    @for $i from 0 through 11 {
+      .image-box._#{$i} {
+        animation-delay: #{($i/8) + 2}s;
+      }
+    }
   }
 }

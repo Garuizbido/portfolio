@@ -15,7 +15,6 @@ import { useState } from "react";
 
 const Sidebar = () => {
   const [showNav, setShowNav] = useState(false);
-  console.log();
   return (
     <div className="nav-bar">
       <Link className="logo" to="/">
@@ -92,18 +91,18 @@ const Sidebar = () => {
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://github.com/Garuizbido"
+            href="https://www.linkedin.com/in/gabriel-ruiz-60557a226/"
           >
-            <FontAwesomeIcon icon={faGithub} color="#4d4d4e" />
+            <FontAwesomeIcon icon={faLinkedinIn} color="#4d4d4e" />
           </a>
         </li>
         <li>
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://www.linkedin.com/in/gabriel-ruiz-60557a226/"
+            href="https://github.com/Garuizbido"
           >
-            <FontAwesomeIcon icon={faLinkedinIn} color="#4d4d4e" />
+            <FontAwesomeIcon icon={faGithub} color="#4d4d4e" />
           </a>
         </li>
       </ul>

@@ -4,7 +4,7 @@ import TagCloud from "TagCloud";
 
 function About() {
   const options = {
-    radius: 450,
+    radius: 400,
     maxSpeed: "fast",
     initSpeed: "medium",
     direction: 135,

@@ -18,8 +18,8 @@ const Array = ({ array, algorithm }) => {
     }
   }
 
-  const width = window.innerWidth * 0.92;
-  const height = window.innerHeight * 0.55;
+  const width = window.innerWidth * 0.94;
+  const height = window.innerHeight * 0.5;
 
   let start = false;
 

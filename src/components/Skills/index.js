@@ -43,7 +43,7 @@ const Skills = () => {
           </p>
         </div>
         <div className="tag-cloud-container">
-          <TagCloud />
+          <TagCloud rads={300} />
         </div>
       </div>
       <Loader type="pacman" />
