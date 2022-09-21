@@ -14,7 +14,11 @@ const Projects = () => {
         {projects.map((project, idx) => {
           return (
             <div className={`image-box _${idx}`} key={idx}>
-              <img src={project.cover} className="project-image" alt="" />{" "}
+              <img
+                src={process.env.PUBLIC_URL + project.cover}
+                className="project-image"
+                alt=""
+              />{" "}
               <div className="content">
                 <p className="title">{project.title}</p>
                 <h4 className="description">{project.description}</h4>
