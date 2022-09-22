@@ -1,7 +1,10 @@
 .dropdown-container {
   select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; /* Remove default arrow */
+
     cursor: pointer;
-    appearance: none;
     font-family: "Azonix";
     outline: none;
     background-color: transparent;

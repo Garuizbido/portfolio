@@ -32,12 +32,23 @@ const Array = ({ array, algorithm }) => {
 
   let rect_width = width / values.length;
 
+  function clearStates() {
+    for (let x = 0; x < values.length; x++) states[x] = -1;
+  }
+
+  async function finishSort() {
+    for (let x = 0; x < values.length; x++) {
+      states[x] = 1;
+      await sleep(5);
+    }
+  }
+
   function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   async function swap(i, j) {
-    await sleep(2);
+    await sleep(30);
     let temp = values[i];
     values[i] = values[j];
     values[j] = temp;
@@ -45,23 +56,29 @@ const Array = ({ array, algorithm }) => {
 
   async function selectionSort(n) {
     var i, j, min_idx;
-
     for (i = 0; i < n - 1; i++) {
+      states[i - 1] = 1;
       min_idx = i;
       for (j = i + 1; j < n; j++) if (values[j] < values[min_idx]) min_idx = j;
+      states[min_idx] = 0;
       await swap(min_idx, i);
+      states[min_idx] = -1;
     }
+    states[i - 1] = 1;
+    states[i] = 1;
   }
 
   async function insertionSort(n) {
     let i, key, j;
     for (i = 1; i < n; i++) {
+      states[i] = 0;
       await sleep(50);
       key = values[i];
       j = i - 1;
       while (j >= 0 && values[j] > key) {
+        states[j + 1] = 1;
         values[j + 1] = values[j];
-        j = j - 1;
+        j -= 1;
       }
       values[j + 1] = key;
     }
@@ -100,37 +117,37 @@ const Array = ({ array, algorithm }) => {
   }
 
   async function merge(low, mid, high) {
-    await sleep(20);
+    await sleep(25);
     let index1 = low;
     let index2 = mid;
     let storageIndex = low;
     while (index1 < mid && index2 < high) {
-      if (array[index1] < array[index2]) {
-        storage[storageIndex] = array[index1];
-        array[index1] = -1;
+      if (values[index1] < values[index2]) {
+        storage[storageIndex] = values[index1];
+        values[index1] = -1;
         index1++;
       } else {
-        storage[storageIndex] = array[index2];
-        array[index2] = -1;
+        storage[storageIndex] = values[index2];
+        values[index2] = -1;
         index2++;
       }
       storageIndex++;
     }
     if (high - index2 < mid - index1) {
       for (let i = index1; i < mid; i++) {
-        storage[storageIndex] = array[i];
-        array[i] = -1;
+        storage[storageIndex] = values[i];
+        values[i] = -1;
         storageIndex++;
       }
     } else {
       for (let i = index2; i < high; i++) {
-        storage[storageIndex] = array[i];
-        array[i] = -1;
+        storage[storageIndex] = values[i];
+        values[i] = -1;
         storageIndex++;
       }
     }
     for (let i = low; i < high; i++) {
-      array[i] = storage[i];
+      values[i] = storage[i];
       storage[i] = -1;
     }
   }
@@ -138,6 +155,7 @@ const Array = ({ array, algorithm }) => {
   async function mergeSort(low, high) {
     if (high - low > 1) {
       const mid = Math.floor((low + high) / 2);
+      states[mid] = -1;
       await mergeSort(low, mid);
       await mergeSort(mid, high);
       await merge(low, mid, high);
@@ -147,9 +165,13 @@ const Array = ({ array, algorithm }) => {
   async function bubbleSort(n) {
     for (let i = 0; i < n; i++) {
       for (let j = 0; j < n - i - 1; j++) {
+        states[j] = 1;
+        states[j + 1] = 0;
         if (values[j] > values[j + 1]) {
           await swap(j, j + 1);
         }
+        states[j] = -1;
+        states[j + 1] = -1;
       }
     }
   }
@@ -176,12 +198,14 @@ const Array = ({ array, algorithm }) => {
     }
   }
 
-  function startSort() {
-    if (algorithm === "bubble") bubbleSort(values.length);
-    if (algorithm === "quick") quickSort(0, values.length - 1);
-    if (algorithm === "merge") mergeSort(0, values.length);
-    if (algorithm === "insertion") insertionSort(values.length);
-    if (algorithm === "selection") selectionSort(values.length);
+  async function startSort() {
+    clearStates();
+    if (algorithm === "bubble") await bubbleSort(values.length);
+    if (algorithm === "quick") await quickSort(0, values.length - 1);
+    if (algorithm === "merge") await mergeSort(0, values.length);
+    if (algorithm === "insertion") await insertionSort(values.length);
+    if (algorithm === "selection") await selectionSort(values.length);
+    await finishSort();
   }
 
   const setup = (p5, canvasParentRef) => {
