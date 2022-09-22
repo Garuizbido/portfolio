@@ -147,8 +147,10 @@ const Array = ({ array, algorithm }) => {
       }
     }
     for (let i = low; i < high; i++) {
+      await sleep(10);
       values[i] = storage[i];
       storage[i] = -1;
+      states[i] = 0;
     }
   }
 
@@ -159,6 +161,11 @@ const Array = ({ array, algorithm }) => {
       await mergeSort(low, mid);
       await mergeSort(mid, high);
       await merge(low, mid, high);
+    }
+
+    for (let i = low; i < high; i++) {
+      await sleep(10);
+      states[i] = 1;
     }
   }
 

@@ -1,6 +1,7 @@
 import "./index.scss";
 import { useState, useEffect } from "react";
 import Loader from "react-loaders";
+import { Link } from "react-router-dom";
 
 import AnimatedLetters from "../AnimatedLetters";
 import projectData from "../../data/projects.json";
@@ -22,12 +23,9 @@ const Projects = () => {
               <div className="content">
                 <p className="title">{project.title}</p>
                 <h4 className="description">{project.description}</h4>
-                <button
-                  className="btn"
-                  onClick={() => window.open(project.url)}
-                >
-                  View
-                </button>
+                <Link to={`/projects/${project.url}`}>
+                  <button className="btn">View</button>
+                </Link>
               </div>
             </div>
           );
