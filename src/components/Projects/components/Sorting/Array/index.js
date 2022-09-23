@@ -185,8 +185,8 @@ const Array = ({ array, algorithm }) => {
 
   function simulateSorting(p5) {
     p5.stroke(100, 143, 143);
-    p5.fill(220);
     for (let i = 0; i < values.length; i++) {
+      console.log(values[i]);
       if (states[i] === 0) {
         p5.fill(255, 0, 0);
       } else if (states[i] === 1) {

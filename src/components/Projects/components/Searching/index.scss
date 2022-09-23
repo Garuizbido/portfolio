@@ -1,0 +1,111 @@
+.searching-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(52, 52, 52, 0);
+  z-index: 1;
+
+  .topbar-container {
+    position: relative;
+    top: 80px;
+    width: 100%;
+    height: 8%;
+    background-color: rgba(128, 128, 128, 0);
+    right: -60px;
+
+    h1 {
+      position: absolute;
+      cursor: default;
+      color: #fff;
+      font-size: 40px;
+      margin-top: 10px;
+      margin-left: 60px;
+      font-family: "Azonix";
+      font-weight: 400;
+      opacity: 0.6;
+    }
+
+    .text-animate {
+      cursor: default;
+      display: inline-block;
+      opacity: 0;
+      animation: bounceIn;
+      animation-duration: 1s;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+      min-width: 10px;
+    }
+
+    .text-animate-hover {
+      min-width: 10px;
+      display: inline-block;
+      animation-fill-mode: both;
+
+      &:hover {
+        animation: rubberBand 1s;
+        color: #ff2010;
+      }
+    }
+
+    @for $i from 1 through 51 {
+      .text-animate._#{$i} {
+        animation-delay: #{$i/12}s;
+      }
+    }
+
+    .size-dropdown {
+      position: absolute;
+      margin-left: 65%;
+      margin-top: -10px;
+      height: 100%;
+      color: #fff;
+      z-index: 10;
+      animation: fadeIn 1s 2.2s backwards;
+    }
+
+    .algorithm-dropdown {
+      position: absolute;
+      color: #fff;
+      width: 15%;
+      height: 100%;
+      margin-left: 50%;
+      margin-top: -10px;
+      z-index: 10;
+      animation: fadeIn 1s 2.2s backwards;
+    }
+
+    input {
+      z-index: 20;
+      cursor: pointer;
+      margin-left: 80%;
+      margin-top: 10px;
+      width: 150px;
+      height: 50px;
+      font-size: 20px;
+      border: none;
+      color: white;
+      background: none;
+      animation: fadeIn 1s 2.2s backwards;
+
+      &:hover {
+        color: #cc1609;
+      }
+    }
+  }
+
+  .map-container {
+    position: absolute;
+    z-index: 10;
+    margin-top: 6%;
+    margin-left: 4%;
+  }
+
+  .instructions-container {
+    color: #fff;
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    font-size: 20px;
+    animation: fadeIn 1s 3s backwards;
+  }
+}

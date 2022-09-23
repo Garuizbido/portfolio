@@ -1,7 +1,7 @@
 import "./index.scss";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-import Dropdown from "./Dropdown";
+import Dropdown from "../Dropdown";
 import Array from "./Array";
 import AnimatedLetters from "../../../AnimatedLetters";
 
@@ -76,12 +76,6 @@ const Sorting = () => {
   const handleArray = () => {
     setArray(createArray);
   };
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLetterClass("text-animate-hover");
-    }, 4500);
-  }, []);
 
   return (
     <div className="sorting-container">
