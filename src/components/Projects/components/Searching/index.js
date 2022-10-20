@@ -31,22 +31,20 @@ const logo = [
   "r",
 ];
 
-const algorithms = [
-  { label: "A*", value: "astar" },
-  { label: "Dijkstra's", value: "quick" },
-  { label: "Gready Best-First", value: "greedy" },
-  { label: "Swarm", value: "swarm" },
-];
+const algorithms = [{ label: "Dijkstra's", value: "dijkstra" }];
 
 const Sorting = () => {
-  const [letterClass, setLetterClass] = useState("text-animate");
-  const [algorithm, setAlgorithm] = useState("bubble");
+  const [algorithm, setAlgorithm] = useState("dijkstra");
 
   return (
     <div className="searching-container">
       <div className="topbar-container">
         <h1>
-          <AnimatedLetters letterClass={letterClass} strArray={logo} idx={12} />
+          <AnimatedLetters
+            letterClass={"text-animate"}
+            strArray={logo}
+            idx={12}
+          />
         </h1>
         <div className="algorithm-dropdown">
           <h2>Algorithm:</h2>
@@ -58,12 +56,8 @@ const Sorting = () => {
             }}
           />
         </div>
-        <div className="map-container">
-          <Map />
-        </div>
-        <input type="button" value="Generate Maze" />
-        <input type="button" value="Clear Walls" />
       </div>
+      <Map algorithm={algorithm} />
     </div>
   );
 };

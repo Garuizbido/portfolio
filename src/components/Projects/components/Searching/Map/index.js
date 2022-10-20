@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Sketch from "react-p5";
 
-const Map = () => {
+const Map = ({ algorithm }) => {
   const [p5, setP5] = useState();
 
   useEffect(() => {
@@ -18,9 +18,15 @@ const Map = () => {
     }
   }
 
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   let grid = [];
 
-  const width = window.innerWidth * 0.7;
+  let working = false;
+
+  const width = window.innerWidth * 0.6;
   const height = window.innerHeight * 0.7;
 
   const rows = 30;
@@ -35,7 +41,7 @@ const Map = () => {
   let end_x = 35;
   let end_y = 15;
 
-  let mode = "wall";
+  let mode = "none";
 
   for (let i = 0; i < cols; i++) {
     grid[i] = new Array(rows);
@@ -47,10 +53,12 @@ const Map = () => {
   grid[start_x][start_y] = 1;
   grid[end_x][end_y] = 2;
 
-  function handleMouse(x, y) {
-    if (mode === "wall") {
-      if (grid[x][y] === -1) grid[x][y] = 0;
-      else if (grid[x][y] === 0) {
+  function handleMousePress(x, y) {
+    if (mode === "none") {
+      if (grid[x][y] === -1) {
+        grid[x][y] = 0;
+        mode = "wall";
+      } else if (grid[x][y] === 0) {
         grid[x][y] = -1;
       } else if (grid[x][y] === 1) {
         grid[x][y] = -1;
@@ -61,13 +69,110 @@ const Map = () => {
       }
     } else if (mode === "start") {
       if (grid[x][y] === -1) {
+        start_x = x;
+        start_y = y;
         grid[x][y] = 1;
-        mode = "wall";
+        mode = "none";
       }
     } else if (mode === "end") {
       if (grid[x][y] === -1) {
+        end_x = x;
+        end_y = y;
         grid[x][y] = 2;
-        mode = "wall";
+        mode = "none";
+      }
+    } else if (mode === "wall") {
+      mode = "none";
+    }
+  }
+
+  async function dijkstraSearch() {
+    working = true;
+    let toVisit = [[start_x, start_y]];
+    let u;
+    while (toVisit.length !== 0) {
+      u = toVisit.shift();
+      if (grid[u[0]][u[1]] === -1) {
+        grid[u[0]][u[1]] = 3;
+        if (
+          u[0] < cols - 1 &&
+          (grid[u[0] + 1][u[1]] === -1 || grid[u[0] + 1][u[1]] === 2)
+        )
+          toVisit.push([u[0] + 1, u[1]]);
+        if (
+          u[0] > 0 &&
+          (grid[u[0] - 1][u[1]] === -1 || grid[u[0] - 1][u[1]] === 2)
+        )
+          toVisit.push([u[0] - 1, u[1]]);
+        if (
+          u[1] < rows &&
+          (grid[u[0]][u[1] + 1] === -1 || grid[u[0]][u[1] + 1] === 2)
+        )
+          toVisit.push([u[0], u[1] + 1]);
+        if (
+          u[1] > 0 &&
+          (grid[u[0]][u[1] - 1] === -1 || grid[u[0]][u[1] - 1] === 2)
+        )
+          toVisit.push([u[0], u[1] - 1]);
+      } else if (grid[u[0]][u[1]] === 1) {
+        if (
+          u[0] < cols - 1 &&
+          (grid[u[0] + 1][u[1]] === -1 || grid[u[0] + 1][u[1]] === 2)
+        )
+          toVisit.push([u[0] + 1, u[1]]);
+        if (
+          u[0] > 0 &&
+          (grid[u[0] - 1][u[1]] === -1 || grid[u[0] - 1][u[1]] === 2)
+        )
+          toVisit.push([u[0] - 1, u[1]]);
+        if (
+          u[1] < rows &&
+          (grid[u[0]][u[1] + 1] === -1 || grid[u[0]][u[1] + 1] === 2)
+        )
+          toVisit.push([u[0], u[1] + 1]);
+        if (
+          u[1] > 0 &&
+          (grid[u[0]][u[1] - 1] === -1 || grid[u[0]][u[1] - 1] === 2)
+        )
+          toVisit.push([u[0], u[1] - 1]);
+      } else if (grid[u[0]][u[1]] === 2) {
+        break;
+      }
+      await sleep(10);
+    }
+    working = false;
+  }
+
+  async function startSearch() {
+    if (algorithm === "dijkstra") await dijkstraSearch();
+  }
+
+  function drawWalls(p5) {
+    if (mode === "wall") {
+      const x = Math.trunc(p5.mouseX / rect_width);
+      const y = Math.trunc(p5.mouseY / rect_heigth);
+      if (grid[x][y] === -1) {
+        grid[x][y] = 0;
+      }
+    }
+  }
+
+  function clearMap() {
+    if (!working) {
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          if (grid[i][j] === 3) grid[i][j] = -1;
+        }
+      }
+    }
+  }
+
+  function clearWalls() {
+    if (!working) {
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          if (grid[i][j] === 0) grid[i][j] = -1;
+        }
       }
     }
   }
@@ -79,6 +184,7 @@ const Map = () => {
         else if (grid[i][j] === 0) p5.fill(80, 80, 80);
         else if (grid[i][j] === 1) p5.fill(255, 0, 0);
         else if (grid[i][j] === 2) p5.fill(100, 200, 50);
+        else if (grid[i][j] === 3) p5.fill(173, 216, 230);
         p5.rect(i * rect_width, j * rect_heigth, rect_width, rect_heigth);
       }
     }
@@ -87,7 +193,7 @@ const Map = () => {
   const setup = (p5, canvasParentRef) => {
     const canvas = p5.createCanvas(width, height).parent(canvasParentRef);
     canvas.mousePressed(() => {
-      handleMouse(
+      handleMousePress(
         Math.trunc(p5.mouseX / rect_width),
         Math.trunc(p5.mouseY / rect_heigth)
       );
@@ -96,14 +202,49 @@ const Map = () => {
 
   const draw = (p5) => {
     p5.background(0);
+    drawWalls(p5);
     visualizeMap(p5);
   };
 
   return (
     <>
-      <Sketch setup={setup} draw={draw} />
+      <div className="controls">
+        <input
+          type="button"
+          className="play-button"
+          value="Start"
+          onClick={startSearch}
+        />
+        <input
+          type="button"
+          className="clear-map-button"
+          value="Clear map"
+          onClick={clearMap}
+        />
+        <input
+          type="button"
+          className="clear-walls-button"
+          value="Clear Walls"
+          onClick={clearWalls}
+        />
+        <input
+          type="button"
+          className="generate-maze-button"
+          value="Generate Maze"
+          onClick={clearWalls}
+        />
+      </div>
+      <div className="map-container">
+        <Sketch setup={setup} draw={draw} />
+      </div>
     </>
   );
 };
 
 export default Map;
+
+/*
+<Sketch setup={setup} draw={draw} />
+<input type="button" value="Generate Maze" />
+      <input type="button" value="Clear Walls" onClick={clearWalls} />
+*/

@@ -36,17 +36,6 @@
       min-width: 10px;
     }
 
-    .text-animate-hover {
-      min-width: 10px;
-      display: inline-block;
-      animation-fill-mode: both;
-
-      &:hover {
-        animation: rubberBand 1s;
-        color: #ff2010;
-      }
-    }
-
     @for $i from 1 through 51 {
       .text-animate._#{$i} {
         animation-delay: #{$i/12}s;
@@ -73,39 +62,5 @@
       z-index: 10;
       animation: fadeIn 1s 2.2s backwards;
     }
-
-    input {
-      z-index: 20;
-      cursor: pointer;
-      margin-left: 80%;
-      margin-top: 10px;
-      width: 150px;
-      height: 50px;
-      font-size: 20px;
-      border: none;
-      color: white;
-      background: none;
-      animation: fadeIn 1s 2.2s backwards;
-
-      &:hover {
-        color: #cc1609;
-      }
-    }
-  }
-
-  .map-container {
-    position: absolute;
-    z-index: 10;
-    margin-top: 6%;
-    margin-left: 4%;
-  }
-
-  .instructions-container {
-    color: #fff;
-    position: absolute;
-    bottom: 5%;
-    left: 10%;
-    font-size: 20px;
-    animation: fadeIn 1s 3s backwards;
   }
 }

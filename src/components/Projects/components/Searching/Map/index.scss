@@ -1,23 +1,93 @@
-canvas {
-  border-radius: 6px;
+.map-container {
+  position: absolute;
+  z-index: 10;
+  margin-left: 4%;
+  margin-top: 3%;
+  animation: fadeIn 3s 2.2s backwards;
+  canvas {
+    position: absolute;
+    border-radius: 6px;
+  }
 }
 
-.play-button {
+.controls {
   position: absolute;
-  left: 50%;
-  bottom: -18%;
-  border: 0;
-  background: transparent;
-  box-sizing: border-box;
-  width: 0;
-  height: 54px;
-  border-color: transparent transparent transparent #ffffff;
-  cursor: pointer;
-  border-style: solid;
-  border-width: 26px 0 26px 40px;
-  animation: fadeIn 3s 2.2s backwards;
+  right: 0;
+  margin-right: 6%;
+  margin-top: 4%;
 
-  &:hover {
-    border-color: transparent transparent transparent #404040;
+  .play-button {
+    bottom: 60%;
+    border: 0;
+    background: transparent;
+    box-sizing: border-box;
+    width: 0;
+    height: 24px;
+    border-color: transparent transparent transparent #ffffff;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 26px 0 26px 40px;
+    animation: fadeIn 3s 2.2s backwards;
+
+    &:hover {
+      border-color: transparent transparent transparent #cc1609;
+    }
+  }
+
+  .clear-walls-button {
+    margin-top: 20%;
+    left: -20%;
+    z-index: 20;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    color: white;
+    background: none;
+    animation: fadeIn 3s 1.4s backwards;
+
+    &:hover {
+      color: #cc1609;
+    }
+  }
+
+  .clear-map-button {
+    margin-top: 20%;
+    left: -20%;
+    bottom: 10%;
+    z-index: 20;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    color: white;
+    background: none;
+    animation: fadeIn 3s 1.4s backwards;
+
+    &:hover {
+      color: #cc1609;
+    }
+  }
+
+  .generate-maze-button {
+    margin-top: 20%;
+    padding-left: 2%;
+    left: -20%;
+    bottom: 10%;
+    z-index: 20;
+    cursor: pointer;
+    width: 220px;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    color: white;
+    background: none;
+    animation: fadeIn 3s 1.4s backwards;
+
+    &:hover {
+      color: #cc1609;
+    }
   }
 }
