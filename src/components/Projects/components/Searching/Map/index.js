@@ -237,6 +237,22 @@ const Map = ({ algorithm }) => {
       <div className="map-container">
         <Sketch setup={setup} draw={draw} />
       </div>
+      <div className="instructions-container">
+        <p>
+          Instructions: <br />
+          1. Choose Searching Algorithm. <br />
+          2. Click on white block to add walls. <br />
+          &nbsp;&nbsp; Click again to stop adding walls.
+          <br />
+          3. Click on red block to pickup start.
+          <br />
+          &nbsp;&nbsp; Click again to set start.
+          <br />
+          4. Click on green block to change end.
+          <br />
+          &nbsp;&nbsp; Click again to set end.
+        </p>
+      </div>
     </>
   );
 };

@@ -91,3 +91,12 @@
     }
   }
 }
+
+.instructions-container {
+  color: #fff;
+  position: absolute;
+  bottom: 5%;
+  left: 70%;
+  font-size: 20px;
+  animation: fadeIn 1s 3s backwards;
+}
