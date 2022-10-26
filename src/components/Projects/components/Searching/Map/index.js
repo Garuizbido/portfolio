@@ -54,35 +54,37 @@ const Map = ({ algorithm }) => {
   grid[end_x][end_y] = 2;
 
   function handleMousePress(x, y) {
-    if (mode === "none") {
-      if (grid[x][y] === -1) {
-        grid[x][y] = 0;
-        mode = "wall";
-      } else if (grid[x][y] === 0) {
-        grid[x][y] = -1;
-      } else if (grid[x][y] === 1) {
-        grid[x][y] = -1;
-        mode = "start";
-      } else if (grid[x][y] === 2) {
-        grid[x][y] = -1;
-        mode = "end";
-      }
-    } else if (mode === "start") {
-      if (grid[x][y] === -1) {
-        start_x = x;
-        start_y = y;
-        grid[x][y] = 1;
+    if (!working) {
+      if (mode === "none") {
+        if (grid[x][y] === -1) {
+          grid[x][y] = 0;
+          mode = "wall";
+        } else if (grid[x][y] === 0) {
+          grid[x][y] = -1;
+        } else if (grid[x][y] === 1) {
+          grid[x][y] = -1;
+          mode = "start";
+        } else if (grid[x][y] === 2) {
+          grid[x][y] = -1;
+          mode = "end";
+        }
+      } else if (mode === "start") {
+        if (grid[x][y] === -1) {
+          start_x = x;
+          start_y = y;
+          grid[x][y] = 1;
+          mode = "none";
+        }
+      } else if (mode === "end") {
+        if (grid[x][y] === -1) {
+          end_x = x;
+          end_y = y;
+          grid[x][y] = 2;
+          mode = "none";
+        }
+      } else if (mode === "wall") {
         mode = "none";
       }
-    } else if (mode === "end") {
-      if (grid[x][y] === -1) {
-        end_x = x;
-        end_y = y;
-        grid[x][y] = 2;
-        mode = "none";
-      }
-    } else if (mode === "wall") {
-      mode = "none";
     }
   }
 
