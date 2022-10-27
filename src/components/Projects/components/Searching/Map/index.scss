@@ -12,17 +12,18 @@
 
 .controls {
   position: absolute;
-  right: 0;
-  margin-right: 6%;
-  margin-top: 4%;
+  right: 10%;
+  margin-right: 4%;
+  margin-top: 6%;
 
   .play-button {
-    bottom: 60%;
-    border: 0;
+    left: 40%;
+    top: 0;
     background: transparent;
     box-sizing: border-box;
+    border: 0;
     width: 0;
-    height: 24px;
+    height: 34px;
     border-color: transparent transparent transparent #ffffff;
     cursor: pointer;
     border-style: solid;
@@ -35,8 +36,7 @@
   }
 
   .clear-walls-button {
-    margin-top: 20%;
-    left: -20%;
+    margin-top: 10%;
     z-index: 20;
     cursor: pointer;
     width: 200px;
@@ -53,8 +53,7 @@
   }
 
   .clear-map-button {
-    margin-top: 20%;
-    left: -20%;
+    margin-top: 40%;
     bottom: 10%;
     z-index: 20;
     cursor: pointer;
@@ -72,9 +71,8 @@
   }
 
   .generate-maze-button {
-    margin-top: 20%;
+    margin-top: 10%;
     padding-left: 2%;
-    left: -20%;
     bottom: 10%;
     z-index: 20;
     cursor: pointer;

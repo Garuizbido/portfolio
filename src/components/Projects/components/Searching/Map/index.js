@@ -23,6 +23,7 @@ const Map = ({ algorithm }) => {
   }
 
   let grid = [];
+  let path = [];
 
   let working = false;
 
@@ -31,6 +32,8 @@ const Map = ({ algorithm }) => {
 
   const rows = 30;
   const cols = 40;
+
+  const total = rows * cols;
 
   const rect_width = width / cols;
   const rect_heigth = height / rows;
@@ -146,7 +149,14 @@ const Map = ({ algorithm }) => {
   }
 
   async function startSearch() {
-    if (algorithm === "dijkstra") await dijkstraSearch();
+    if (algorithm === "dijkstra") {
+      await dijkstraSearch();
+      await drawShortest();
+    }
+  }
+
+  async function drawShortest() {
+    await sleep(10);
   }
 
   function drawWalls(p5) {
@@ -187,6 +197,7 @@ const Map = ({ algorithm }) => {
         else if (grid[i][j] === 1) p5.fill(255, 0, 0);
         else if (grid[i][j] === 2) p5.fill(100, 200, 50);
         else if (grid[i][j] === 3) p5.fill(173, 216, 230);
+        else if (grid[i][j] === 4) p5.fill(255, 255, 51);
         p5.rect(i * rect_width, j * rect_heigth, rect_width, rect_heigth);
       }
     }
@@ -211,30 +222,38 @@ const Map = ({ algorithm }) => {
   return (
     <>
       <div className="controls">
-        <input
-          type="button"
-          className="play-button"
-          value="Start"
-          onClick={startSearch}
-        />
-        <input
-          type="button"
-          className="clear-map-button"
-          value="Clear map"
-          onClick={clearMap}
-        />
-        <input
-          type="button"
-          className="clear-walls-button"
-          value="Clear Walls"
-          onClick={clearWalls}
-        />
-        <input
-          type="button"
-          className="generate-maze-button"
-          value="Generate Maze"
-          onClick={clearWalls}
-        />
+        <div>
+          <input
+            type="button"
+            className="play-button"
+            value="Start"
+            onClick={startSearch}
+          />
+        </div>
+        <div>
+          <input
+            type="button"
+            className="clear-map-button"
+            value="Clear map"
+            onClick={clearMap}
+          />
+        </div>
+        <div>
+          <input
+            type="button"
+            className="clear-walls-button"
+            value="Clear Walls"
+            onClick={clearWalls}
+          />
+        </div>
+        <div>
+          <input
+            type="button"
+            className="generate-maze-button"
+            value="Generate Maze"
+            onClick={clearWalls}
+          />
+        </div>
       </div>
       <div className="map-container">
         <Sketch setup={setup} draw={draw} />
