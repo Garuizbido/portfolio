@@ -2,7 +2,7 @@
   "name": "portfoliov2",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://garuizbido.github.io/portfolio",
+  "homepage": "https://garuizbido.github.io",
   "dependencies": {
     "@emailjs/browser": "^3.7.0",
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
