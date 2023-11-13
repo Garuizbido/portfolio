@@ -25,7 +25,7 @@ const Sidebar = () => {
           exact="true"
           activeclassname="active"
           className="home-link"
-          to="/"
+          to="/home"
           onClick={() => {
             setShowNav(false);
           }}

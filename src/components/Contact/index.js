@@ -101,7 +101,7 @@ const Contact = () => {
         </div>
         <div className="map-wrap">
           <MapContainer
-            center={[25.708883110401665, -80.28583606024401]}
+            center={[25.7887278, -80.1933151]}
             zoom={12}
             scrollWheelZoom={false}
             zoomControl={false}
@@ -110,7 +110,7 @@ const Contact = () => {
             touchZoom={false}
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <Marker position={[25.708883110401665, -80.28583606024401]} />
+            <Marker position={[25.7887278, -80.1933151]} />
           </MapContainer>
         </div>
       </div>

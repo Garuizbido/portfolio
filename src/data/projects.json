@@ -4,37 +4,13 @@
       "cover": "/projects/sorting/sorting.png",
       "title": "Sorting Algorithm Visualizer",
       "description": "Built with P5JS",
-      "url": "/sorting"
+      "url": "sorting"
     },
     {
-      "cover": "/projects/sorting/sorting.png",
-      "title": "Sorting Algorithm Visualizer",
+      "cover": "/projects/sorting/searching.png",
+      "title": "Searching Algorithm Visualizer",
       "description": "Built with P5JS",
-      "url": "/sorting"
-    },
-    {
-      "cover": "/projects/sorting/sorting.png",
-      "title": "Sorting Algorithm Visualizer",
-      "description": "Built with P5JS",
-      "url": "/sorting"
-    },
-    {
-      "cover": "/projects/sorting/sorting.png",
-      "title": "Sorting Algorithm Visualizer",
-      "description": "Built with P5JS",
-      "url": "/sorting"
-    },
-    {
-      "cover": "/projects/sorting/sorting.png",
-      "title": "Sorting Algorithm Visualizer",
-      "description": "Built with P5JS",
-      "url": "/sorting"
-    },
-    {
-      "cover": "/projects/sorting/sorting.png",
-      "title": "Sorting Algorithm Visualizer",
-      "description": "Built with P5JS",
-      "url": "/sorting"
+      "url": "searching"
     }
   ]
 }
